@@ -10,7 +10,7 @@ fi
 
 mode=$1
 flags=""
-common="-lm -pthread -march=native -lSDL2 -lSDL2main"
+common="-lm -lsfml-graphics -lsfml-window -lsfml-system"
 
 if [ $mode == "debug" ]
 then
@@ -27,7 +27,7 @@ mkdir -p build
 mkdir -p build/debug 
 mkdir -p build/release 
 
-time gcc source/main.c -o build/"$mode"/main $flags $common 
+time g++ source/main.cpp -o build/"$mode"/main $flags $common 
 
 # TODO(stanisz): i dont know why these are created, so this
 # deletion is a temporary hotfix
